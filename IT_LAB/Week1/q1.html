@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Question 1</title>
+        <script type = "text/javascript" src="jquery.min.js">
+        </script>
+        <script type = "text/javascript" language = "javascript">
+            $(document).ready(function() {
+                $("table, th, td").css({
+                    "border": "1px solid black",
+                    "border-collapse": "collapse"
+                });
+                $("#btnSubmit").click(function(){
+                    $("div").attr("style","margin-left: 0px;")
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <div style="margin-left: 500px;">
+            <img src="Vadodara.jpg" style="height: 100px;">
+            <table>
+                <tr style="background-color: blue; font-size: xx-large;">
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                </tr>
+                <tr style="background-color: yellowgreen; font-size: xx-large;">
+                    <th>D</th>
+                    <th>E</th>
+                    <th>F</th>
+                </tr>
+                <tr style="background-color: blue; font-size: xx-large;">
+                    <th>G</th>
+                    <th>H</th>
+                    <th>I</th>
+                </tr>
+            </table>
+        </div>
+        <input id="btnSubmit" type="submit" value="submit" />
+    </body>
+</html>
