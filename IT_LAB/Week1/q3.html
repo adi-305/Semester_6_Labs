@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Question 3</title>
+        <script type = "text/javascript" src="jquery-3.7.1.min.js"></script>
+        <script type = "text/javascript" language = "javascript">
+            $(document).ready(()=>{
+                $("#update").click(()=>{
+                    $("#card").css("background-color",
+                        $("#Color").val()
+                    );
+                    $("#text").css("font-family",
+                        $("#Font").val()
+                    );
+                    $("#text").html($("#greeting").val());
+                    if($("#double").is(":checked"))
+                    {
+                        $("#card").css("border-style","double");
+                    }
+                    else if($("#solid").is(":checked"))
+                    {
+                        $("#card").css("border-style","solid");
+                    }
+                    else
+                    {
+                        $("#card").css("border-style","none");
+                    }
+                    if(!$("#pic").is(":checked"))
+                    {
+                        $("#image").css("visibility","hidden");
+                    }
+                    else
+                    {
+                        $("#image").css("visibility","visible");
+                    }
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="row" style="display: flex;">
+            <div class="column" style="width: 50%; background-color:cornsilk; height: 530px; font-size: larger;" >
+                    <label for="Color">Choose a Background-Color<br></label>
+                        <select name="Color" id="Color">
+                            <option value="Lavender">Lavender</option>
+                            <option value="Azure">Azure</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Olive">Olive</option>
+                        </select>
+                    <br>
+                    <label for="cars">Choose a Font:<br></label>
+                        <select name="Font" id="Font">
+                            <option value="Arial">Arial</option>
+                            <option value="Verdana">Verdana</option>
+                        </select>
+                    <br>
+                    Choose a Border Style :
+                    <br>
+                    <br>
+                    <input type="radio" name="border" id="none" value="none"> None <br>
+                    <input type="radio" name="border" id="double" value="double"> Double <br>
+                    <input type="radio" name="border" id="solid" value="solid"> Solid <br>
+                    <br>
+                    <input type="checkbox" id="pic" value="defaultPic"> Add the Default Picture
+                    <br>
+                    <br>
+                    <p>Enter Greeting Text Below : </p>
+                    <textarea id="greeting"></textarea>
+                    <br>
+                    <br>
+                    <input type="button" id="update" value="Update">
+            </div>
+            <div class="column" id = "card" style="display: grid;justify-content: center;width: 50%;">
+                <h1 id = "text"></h1>
+                <img id="image" src="Birthday.jpeg" height="300px" width="300px">
+            </div>
+        </div>
+    </body>
+</html>
