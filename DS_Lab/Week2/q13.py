@@ -6,11 +6,8 @@ a = {
 }
 # Part a
 df = pd.DataFrame.from_dict(a)
-print(df)
-
 # Part b
 address = ['Mumbai','Chennai','Delhi']
-
 # Part c
 df['Address'] = address
 print(df)
