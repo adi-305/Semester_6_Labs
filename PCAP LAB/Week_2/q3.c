@@ -5,7 +5,7 @@
 
 
 int main(int argc,char *argv[]){
-	int rank,size;
+	int rank,size,a;
 	MPI_Init(&argc,&argv);
 	MPI_Comm_rank(MPI_COMM_WORLD,&rank);
 	MPI_Comm_size(MPI_COMM_WORLD,&size);
@@ -14,12 +14,17 @@ int main(int argc,char *argv[]){
 	MPI_Status status;
 	if(rank == 0){
 		for(int i = 0;i<size;i++){
-			printf("Enter the number %d",i+1);
+			printf("Enter the number %d ",i+1);
 			scanf("%d",&number[i]);
 		}
+
+		int buffer_size = size * sizeof(int) + MPI_BSEND_OVERHEAD;
+		void *buffer = malloc(buffer_size);
+		MPI_Buffer_attach(&buffer,buffer_size);
 		for(int i =1 ;i<size;i++){
-			MPI_Send(&number[i],1,MPI_INT,i,1,MPI_COMM_WORLD);
+			MPI_Bsend(&number[i],1,MPI_INT,i,1,MPI_COMM_WORLD);
 		}
+		MPI_Buffer_detach(buffer,&buffer_size);
 		printf("In process %d. Number recieved : %d Square: %d\n",rank,number[0],number[0]*number[0]);
 		fflush(stdout);
 	}
