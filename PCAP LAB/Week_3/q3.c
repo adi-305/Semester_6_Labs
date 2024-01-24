@@ -34,7 +34,7 @@ int main(int argc,char *argv[]){
 	//c = factorial(c);
 	int num = 0;
 	for(i = 0;i<m;i++){
-		if(isVowel(C[i])) num++;
+		if(!isVowel(C[i])) num++;
 	}
 	MPI_Gather(&num,1,MPI_INT,B,1,MPI_INT,0,MPI_COMM_WORLD);
 	if(rank == 0){
@@ -50,7 +50,7 @@ int main(int argc,char *argv[]){
 		{
 			sum+=B[i];
 		}
-		fprintf(stdout, "The total number of vowels is %d\n",sum);
+		fprintf(stdout, "The total number of non vowels is %d\n",sum);
 		fflush(stdout);
 	}
 	MPI_Finalize();
